@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "mineshuko-tensei",
+	"version": "${version}",
+	"name": "mineshuko tensei",
+	"description": "This is a mod made to turn minecraft into mushoku tensei.",
+	"authors": [
+		"ceezes"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "ceezes' production",
+	"icon": "assets/mineshuko-tensei/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"mineshuko.tensei.MineshukoTensei"
+		],
+      "client": [
+        "mineshuko.tensei.MineshukoTenseiClient"
+      ],
+		"fabric-datagen": [
+			"mineshuko.tensei.MineshukoTenseiDataGenerator"
+		]
+	},
+	"mixins": [
+		"mineshuko-tensei.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.17.2",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
