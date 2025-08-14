@@ -14,3 +14,9 @@ public class MineshukoTensei implements ModInitializer {
 		LOGGER.info("Hello Fabric world!");
 	}
 }
+Identifier CUTSCENE_DIM = new Identifier("mineshuko-tensei", "cutscene_dimension");
+
+ServerWorld cutsceneWorld = server.getWorld(RegistryKey.of(RegistryKeys.WORLD, CUTSCENE_DIM));
+if (cutsceneWorld != null) {
+        player.teleport(cutsceneWorld, 0.5, 100, 0.5, player.getYaw(), player.getPitch());
+        }
