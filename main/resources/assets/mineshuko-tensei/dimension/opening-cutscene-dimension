@@ -1,0 +1,15 @@
+{
+  "type": "mineshuko-tensei:cutscene_dimension_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:plains",
+      "features": false,
+      "layers": [
+        { "block": "minecraft:bedrock", "height": 1 },
+        { "block": "minecraft:stone", "height": 5 },
+        { "block": "minecraft:grass_block", "height": 1 }
+      ]
+    }
+  }
+}
