@@ -1,5 +1,6 @@
 package mineshuko.tensei.mixin;
 
+import mineshuko.tensei.ServerPlayerDataAccess;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,29 +10,29 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
-public class ServerPlayerEntityMixin {
+public abstract class ServerPlayerEntityMixin implements ServerPlayerDataAccess {
     @Unique
-    private boolean mineshuko$cutsceneSeen = false;
+    private int seenCutscene = 0;
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
-    private void onWriteCustomData(NbtCompound nbt, CallbackInfo ci) {
-        nbt.putBoolean("mineshuko_cutscene_seen", mineshuko$cutsceneSeen);
+    private void writeCustomDataToNbt(NbtCompound nbt, CallbackInfo ci) {
+        nbt.putInt("seenCutscene", seenCutscene);
     }
 
-    @Inject(method = "readCustomDataFromNbt", at = @At("HEAD"))
-    private void onReadCustomData(NbtCompound nbt, CallbackInfo ci) {
-        if (nbt.contains("mineshuko_cutscene_seen")) {
-            mineshuko$cutsceneSeen = nbt.getBoolean("mineshuko_cutscene_seen");
+    @Inject(method = "readCustomDataFromNbt", at = @At("TAIL"))
+    private void readCustomDataFromNbt(NbtCompound nbt, CallbackInfo ci) {
+        if (nbt.contains("seenCutscene")) {
+            seenCutscene = nbt.getInt("seenCutscene");
         }
     }
 
-    @Unique
-    public boolean mineshuko$hasSeenCutscene() {
-        return mineshuko$cutsceneSeen;
+    @Override
+    public int getSeenCutscene() {
+        return seenCutscene;
     }
 
-    @Unique
-    public void mineshuko$setCutsceneSeen(boolean seen) {
-        mineshuko$cutsceneSeen = seen;
+    @Override
+    public void setSeenCutscene(int seen) {
+        this.seenCutscene = seen;
     }
 }
