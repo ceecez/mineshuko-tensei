@@ -28,6 +28,7 @@ public class MineshukoTensei implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        System.out.println("Mineshuko Tensei mod initialized!");
         // Register DimensionType
         DimensionType cutsceneDimensionType = DimensionType.create(
                 OptionalLong.of(6000),

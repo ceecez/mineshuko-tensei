@@ -1,6 +1,6 @@
-package mineshuko.tensei.;
+package mineshuko.tensei;
 
-public interface ServerPayerDataAccess {
+public interface ServerPlayerDataAccess {
     int getSeenCutscene();
     void setSeenCutscene(int seen);
 }
